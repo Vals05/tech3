@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!-- Primera pagina del curso dinámica-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TechShop_cito</title>
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <h3 th:text="${saludo}"></h3>
+        <h4 th:text="${edad}"></h4>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+    </body>
+</html>
