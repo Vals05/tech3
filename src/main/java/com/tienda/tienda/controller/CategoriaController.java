@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/categoria")
-public class indexController {
+public class CategoriaController {
     @Autowired
     private CategoriaService categoriaService;
     
@@ -54,4 +54,5 @@ public class indexController {
         model.addAttribute("categoria", categoria);
         return "categoria/modifica";
     }
+  
 }

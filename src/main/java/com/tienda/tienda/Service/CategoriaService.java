@@ -17,5 +17,5 @@ public interface CategoriaService {
     
     //Elimina un registro de la tabla categoria... si el onjeto pasado tiene un idCategoria y esteexiste en la tabla.
    public void delete(Categoria categoria);
-   
+  
 }

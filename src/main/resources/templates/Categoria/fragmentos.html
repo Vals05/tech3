@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- Primera pagina del curso dinámica-->
 <html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>TechShop_cito</title>
@@ -13,6 +14,7 @@
                 <div class="row">
                     <div class = "col-md-3">
                         <button
+                            sec:authorize="hasRole('ROLE_ADMIN')"
                             type="button"
                             class="btn btn-primary btn-block"
                             data-bs-toggle="modal"
@@ -46,9 +48,9 @@
                               enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="description">[[#{categoria.description}]]</label>
+                                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
 
-                                    <input type="text" class="form-control" name="description" required="true"/>
+                                    <input type="text" class="form-control" name="descripcion" required="true"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="activo"> [[#{categoria.activo}]]</label>
@@ -85,14 +87,15 @@
                                         <tr><th>#</th>
                                             <th>[[#{categoria.descripcion}]]</th>
                                             <th>[[#{categoria.activo}]]</th>
-                                            <th></th></tr>
+                                            <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                                        </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="categoria, contador : ${categorias}">
                                             <td th:text="${contador.count}">1</td>
-                                            <td th:text="${categoria.description}">Nombre de la categoría</td>
+                                            <td th:text="${categoria.descripcion}">Nombre de la categoría</td>
                                             <td th:text="${categoria.activo ? 'Activa' : 'Inactiva'}">Activo/Inactivo</td>
-                                            <td>
+                                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                                 <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}" class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> Eliminar
                                                 </a>
@@ -100,6 +103,7 @@
                                                     <i class="fas fa-pencil"></i> Actualizar
                                                 </a>
                                             </td>
+                                            
                                         </tr>
                                     </tbody>
 
@@ -150,7 +154,7 @@
                                                     <label for="descripcion">[[#{accion.descripcion}]]</label>
 
                                                     <input  type="text" class="form-control"
-                                                            name="description" th:field="*{description}"
+                                                            name="descripcion" th:field="*{descripcion}"
                                                             required="true"/>
                                                 </div>  
                                                 <div class="mb-3">
