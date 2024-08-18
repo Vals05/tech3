@@ -45,4 +45,21 @@ public class ProductoServiceImpl1 implements ProductoService {
         productodao.delete(producto);
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> findByPrecioDetweenOrderByDescripcion(double precioInf, double precioSup) {
+        return productodao.findByPrecioBetweenOrderByDescripcion(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoJPQL(double precioInf, double precioSup) {
+        return productodao.metodoJPQL(precioInf, precioSup);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Producto> metodoSQL(double precioInf, double precioSup) {
+        return productodao.metodoSQL(precioInf, precioSup);
+    }
 }

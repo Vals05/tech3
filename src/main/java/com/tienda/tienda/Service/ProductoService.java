@@ -17,5 +17,11 @@ public interface ProductoService {
     
     //Elimina un registro de la tabla producto... si el onjeto pasado tiene un idProducto y esteexiste en la tabla.
    public void delete(Producto producto);
-   
+   //Se define el metodo para llamar a la consulta ampliada
+       public List<Producto> findByPrecioDetweenOrderByDescripcion(double precioInf, double precioSup);
+    //Se define el metodo para llamar a la consulta ampliada JPQL
+       public List<Producto> metodoJPQL(double precioInf, double precioSup);
+       
+       //Se define el metodo para llamar a la consulta ampliada SQL
+       public List<Producto> metodoSQL(double precioInf, double precioSup);
 }
